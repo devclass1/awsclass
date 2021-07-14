@@ -1,1 +1,3 @@
-https://aws.amazon.com/compliance/shared-responsibility-model/
+https://aws.amazon.com/inspector/faqs/
+https://aws.amazon.com/guardduty/faqs/
+https://www.amazonaws.cn/en/support/trustedadvisor/faq/
