@@ -4,3 +4,6 @@ Rolling Updates
 Blue/Green
 Immutable
 All at Once
+
+
+Reference: https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.rolling-version-deploy.html
