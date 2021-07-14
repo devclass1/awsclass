@@ -1,3 +1,6 @@
-https://aws.amazon.com/inspector/faqs/
-https://aws.amazon.com/guardduty/faqs/
-https://www.amazonaws.cn/en/support/trustedadvisor/faq/
+You need to deploy a new version of your application. You’d prefer to use all new instances if possible, but you cannot have any downtime. You also don’t want to swap any environment URLs. You’re running t2.large instances and you normally need 15 instances to meet capacity. Which deployment method should you use? Choose the correct answer:
+
+Rolling Updates
+Blue/Green
+Immutable
+All at Once
