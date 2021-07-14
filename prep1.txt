@@ -1,9 +1,1 @@
-You need to deploy a new version of your application. You’d prefer to use all new instances if possible, but you cannot have any downtime. You also don’t want to swap any environment URLs. You’re running t2.large instances and you normally need 15 instances to meet capacity. Which deployment method should you use? Choose the correct answer:
 
-Rolling Updates
-Blue/Green
-Immutable
-All at Once
-
-
-Reference: https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.rolling-version-deploy.html
