@@ -5,3 +5,7 @@ A. Modify the AWS Glue job to copy the rows into a staging table. Add SQL comman
 B. Load the previously inserted data into a MySQL database in the AWS Glue job. Perform an upsert operation in MySQL, and copy the results to the Amazon Redshift table.
 C. Use Apache Spark’s DataFrame dropDuplicates() API to eliminate duplicates and then write the data to Amazon Redshift.
 D. Use the AWS Glue ResolveChoice built-in transform to select the most recent value of the column.
+
+
+
+https://docs.aws.amazon.com/glue/latest/dg/monitor-continuations.html
