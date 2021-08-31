@@ -24,9 +24,12 @@ D. Write the files to multiple S3 buckets.
 https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html
 
 
-A company has a business unit uploading .csv files to an Amazon S3 bucket. The companyג€™s data platform team has set up an AWS Glue crawler to do discovery, and create tables and schemas. An AWS Glue job writes processed data from the created tables to an Amazon Redshift database. The AWS Glue job handles column mapping and creating the Amazon Redshift table appropriately. When the AWS Glue job is rerun for any reason in a day, duplicate records are introduced into the Amazon Redshift table.
-Which solution will update the Redshift table without duplicates when jobs are rerun?
-A. Modify the AWS Glue job to copy the rows into a staging table. Add SQL commands to replace the existing rows in the main table as postactions in the DynamicFrameWriter class.
-B. Load the previously inserted data into a MySQL database in the AWS Glue job. Perform an upsert operation in MySQL, and copy the results to the Amazon Redshift table.
-C. Use Apache Sparkג€™s DataFrame dropDuplicates() API to eliminate duplicates and then write the data to Amazon Redshift.
-D. Use the AWS Glue ResolveChoice built-in transform to select the most recent value of the column.
+A company uses Amazon Elasticsearch Service (Amazon ES) to store and analyze its website clickstream data. The company ingests 1 TB of data daily using
+Amazon Kinesis Data Firehose and stores one dayג€™s worth of data in an Amazon ES cluster.
+The company has very slow query performance on the Amazon ES index and occasionally sees errors from Kinesis Data Firehose when attempting to write to the index. The Amazon ES cluster has 10 nodes running a single index and 3 dedicated master nodes. Each data node has 1.5 TB of Amazon EBS storage attached and the cluster is configured with 1,000 shards. Occasionally, JVMMemoryPressure errors are found in the cluster logs.
+Which solution will improve the performance of Amazon ES?
+A. Increase the memory of the Amazon ES master nodes.
+B. Decrease the number of Amazon ES data nodes.
+C. Decrease the number of Amazon ES shards for the index.
+D. Increase the number of Amazon ES shards for the index.
+ 
