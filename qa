@@ -32,4 +32,7 @@ A. Increase the memory of the Amazon ES master nodes.
 B. Decrease the number of Amazon ES data nodes.
 C. Decrease the number of Amazon ES shards for the index.
 D. Increase the number of Amazon ES shards for the index.
+
+
+https://aws.amazon.com/premiumsupport/knowledge-center/high-jvm-memory-pressure-elasticsearch/
  
