@@ -19,3 +19,6 @@ A. Merge the files in Amazon S3 to form larger files.
 B. Increase the number of shards in Kinesis Data Streams.
 C. Add more memory and CPU capacity to the streaming application.
 D. Write the files to multiple S3 buckets.
+
+
+https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html
