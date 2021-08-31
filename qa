@@ -22,3 +22,11 @@ D. Write the files to multiple S3 buckets.
 
 
 https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html
+
+
+A company has a business unit uploading .csv files to an Amazon S3 bucket. The companyג€™s data platform team has set up an AWS Glue crawler to do discovery, and create tables and schemas. An AWS Glue job writes processed data from the created tables to an Amazon Redshift database. The AWS Glue job handles column mapping and creating the Amazon Redshift table appropriately. When the AWS Glue job is rerun for any reason in a day, duplicate records are introduced into the Amazon Redshift table.
+Which solution will update the Redshift table without duplicates when jobs are rerun?
+A. Modify the AWS Glue job to copy the rows into a staging table. Add SQL commands to replace the existing rows in the main table as postactions in the DynamicFrameWriter class.
+B. Load the previously inserted data into a MySQL database in the AWS Glue job. Perform an upsert operation in MySQL, and copy the results to the Amazon Redshift table.
+C. Use Apache Sparkג€™s DataFrame dropDuplicates() API to eliminate duplicates and then write the data to Amazon Redshift.
+D. Use the AWS Glue ResolveChoice built-in transform to select the most recent value of the column.
