@@ -9,3 +9,13 @@ D. Use the AWS Glue ResolveChoice built-in transform to select the most recent v
 
 
 https://docs.aws.amazon.com/glue/latest/dg/monitor-continuations.html
+
+
+A streaming application is reading data from Amazon Kinesis Data Streams and immediately writing the data to an Amazon S3 bucket every 10 seconds. The application is reading data from hundreds of shards. The batch interval cannot be changed due to a separate requirement. The data is being accessed by Amazon
+Athena. Users are seeing degradation in query performance as time progresses.
+Which action can help improve query performance?
+
+A. Merge the files in Amazon S3 to form larger files.
+B. Increase the number of shards in Kinesis Data Streams.
+C. Add more memory and CPU capacity to the streaming application.
+D. Write the files to multiple S3 buckets.
