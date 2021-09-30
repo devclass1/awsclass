@@ -1,45 +1,70 @@
-A company has a business unit uploading .csv files to an Amazon S3 bucket. The company’s data platform team has set up an AWS Glue crawler to do discovery, and create tables and schemas. An AWS Glue job writes processed data from the created tables to an Amazon Redshift database. The AWS Glue job handles column mapping and creating the Amazon Redshift table appropriately. When the AWS Glue job is rerun for any reason in a day, duplicate records are introduced into the Amazon Redshift table.
-Which solution will update the Redshift table without duplicates when jobs are rerun?
-
-A. Modify the AWS Glue job to copy the rows into a staging table. Add SQL commands to replace the existing rows in the main table as postactions in the DynamicFrameWriter class.
-B. Load the previously inserted data into a MySQL database in the AWS Glue job. Perform an upsert operation in MySQL, and copy the results to the Amazon Redshift table.
-C. Use Apache Spark’s DataFrame dropDuplicates() API to eliminate duplicates and then write the data to Amazon Redshift.
-D. Use the AWS Glue ResolveChoice built-in transform to select the most recent value of the column.
-
+A company wants to improve the data load time of a sales data dashboard. Data has been collected as .csv files and stored within an Amazon S3 bucket that is partitioned by date. The data is then loaded to an Amazon Redshift data warehouse for frequent analysis. The data volume is up to 500 GB per day.
+Which solution will improve the data loading performance?
+A. Compress .csv files and use an INSERT statement to ingest data into Amazon Redshift.
+B. Split large .csv files, then use a COPY command to load data into Amazon Redshift.
+C. Use Amazon Kinesis Data Firehose to ingest data into Amazon Redshift.
+D. Load the .csv files in an unsorted key order and vacuum the table in Amazon Redshift.
 
 
-https://docs.aws.amazon.com/glue/latest/dg/monitor-continuations.html
+Answer : C
+
+Reference:
+https://aws.amazon.com/blogs/big-data/using-amazon-redshift-spectrum-amazon-athena-and-aws-glue-with-node-js-in-production/
+
+A company has a data warehouse in Amazon Redshift that is approximately 500 TB in size. New data is imported every few hours and read-only queries are run throughout the day and evening. There is a particularly heavy load with no writes for several hours each morning on business days. During those hours, some queries are queued and take a long time to execute. The company needs to optimize query execution and avoid any downtime.
+What is the MOST cost-effective solution?
+A. Enable concurrency scaling in the workload management (WLM) queue.
+B. Add more nodes using the AWS Management Console during peak hours. Set the distribution style to ALL.
+C. Use elastic resize to quickly add nodes during peak times. Remove the nodes when they are not needed.
+D. Use a snapshot, restore, and resize operation. Switch to the new target cluster.
+
+Answer : A
+
+A company stores its sales and marketing data that includes personally identifiable information (PII) in Amazon S3. The company allows its analysts to launch their own Amazon EMR cluster and run analytics reports with the data. To meet compliance requirements, the company must ensure the data is not publicly accessible throughout this process. A data engineer has secured Amazon S3 but must ensure the individual EMR clusters created by the analysts are not exposed to the public internet.
+Which solution should the data engineer to meet this compliance requirement with LEAST amount of effort?
+A. Create an EMR security configuration and ensure the security configuration is associated with the EMR clusters when they are created.
+B. Check the security group of the EMR clusters regularly to ensure it does not allow inbound traffic from IPv4 0.0.0.0/0 or IPv6 ::/0.
+C. Enable the block public access setting for Amazon EMR at the account level before any EMR cluster is created.
+D. Use AWS WAF to block public internet access to the EMR clusters across the board.
+
+Answer : B
+
+Reference:
+https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-security-groups.html
+
+A financial company uses Amazon S3 as its data lake and has set up a data warehouse using a multi-node Amazon Redshift cluster. The data files in the data lake are organized in folders based on the data source of each data file. All the data files are loaded to one table in the Amazon Redshift cluster using a separate
+COPY command for each data file location. With this approach, loading all the data files into Amazon Redshift takes a long time to complete. Users want a faster solution with little or no increase in cost while maintaining the segregation of the data files in the S3 data lake.
+Which solution meets these requirements?
+A. Use Amazon EMR to copy all the data files into one folder and issue a COPY command to load the data into Amazon Redshift.
+B. Load all the data files in parallel to Amazon Aurora, and run an AWS Glue job to load the data into Amazon Redshift.
+C. Use an AWS Glue job to copy all the data files into one folder and issue a COPY command to load the data into Amazon Redshift.
+D. Create a manifest file that contains the data file locations and issue a COPY command to load the data into Amazon Redshift.
+
+Answer : A
+
+Reference:
+https://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html
+
+A technology company is creating a dashboard that will visualize and analyze time-sensitive data. The data will come in through Amazon Kinesis Data Firehose with the butter interval set to 60 seconds. The dashboard must support near-real-time data.
+Which visualization solution will meet these requirements?
+A. Select Amazon Elasticsearch Service (Amazon ES) as the endpoint for Kinesis Data Firehose. Set up a Kibana dashboard using the data in Amazon ES with the desired analyses and visualizations.
+B. Select Amazon S3 as the endpoint for Kinesis Data Firehose. Read data into an Amazon SageMaker Jupyter notebook and carry out the desired analyses and visualizations.
+C. Select Amazon Redshift as the endpoint for Kinesis Data Firehose. Connect Amazon QuickSight with SPICE to Amazon Redshift to create the desired analyses and visualizations.
+D. Select Amazon S3 as the endpoint for Kinesis Data Firehose. Use AWS Glue to catalog the data and Amazon Athena to query it. Connect Amazon QuickSight with SPICE to Athena to create the desired analyses and visualizations.
+
+Answer : A
+
+A financial company uses Apache Hive on Amazon EMR for ad-hoc queries. Users are complaining of sluggish performance.
+A data analyst notes the following:
+✑ Approximately 90% of queries are submitted 1 hour after the market opens.
+Hadoop Distributed File System (HDFS) utilization never exceeds 10%.
 
 
-A streaming application is reading data from Amazon Kinesis Data Streams and immediately writing the data to an Amazon S3 bucket every 10 seconds. The application is reading data from hundreds of shards. The batch interval cannot be changed due to a separate requirement. The data is being accessed by Amazon
-Athena. Users are seeing degradation in query performance as time progresses.
-Which action can help improve query performance?
 
-A. Merge the files in Amazon S3 to form larger files.
-B. Increase the number of shards in Kinesis Data Streams.
-C. Add more memory and CPU capacity to the streaming application.
-D. Write the files to multiple S3 buckets.
+Which solution would help address the performance issues?
+A. Create instance fleet configurations for core and task nodes. Create an automatic scaling policy to scale out the instance groups based on the Amazon CloudWatch CapacityRemainingGB metric. Create an automatic scaling policy to scale in the instance fleet based on the CloudWatch CapacityRemainingGB metric.
+B. Create instance fleet configurations for core and task nodes. Create an automatic scaling policy to scale out the instance groups based on the Amazon CloudWatch YARNMemoryAvailablePercentage metric. Create an automatic scaling policy to scale in the instance fleet based on the CloudWatch YARNMemoryAvailablePercentage metric.
+C. Create instance group configurations for core and task nodes. Create an automatic scaling policy to scale out the instance groups based on the Amazon CloudWatch CapacityRemainingGB metric. Create an automatic scaling policy to scale in the instance groups based on the CloudWatch CapacityRemainingGB metric.
+D. Create instance group configurations for core and task nodes. Create an automatic scaling policy to scale out the instance groups based on the Amazon CloudWatch YARNMemoryAvailablePercentage metric. Create an automatic scaling policy to scale in the instance groups based on the CloudWatch YARNMemoryAvailablePercentage metric.
 
-
-https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html
-
-
-A company uses Amazon Elasticsearch Service (Amazon ES) to store and analyze its website clickstream data. The company ingests 1 TB of data daily using
-Amazon Kinesis Data Firehose and stores one dayג€™s worth of data in an Amazon ES cluster.
-The company has very slow query performance on the Amazon ES index and occasionally sees errors from Kinesis Data Firehose when attempting to write to the index. The Amazon ES cluster has 10 nodes running a single index and 3 dedicated master nodes. Each data node has 1.5 TB of Amazon EBS storage attached and the cluster is configured with 1,000 shards. Occasionally, JVMMemoryPressure errors are found in the cluster logs.
-Which solution will improve the performance of Amazon ES?
-A. Increase the memory of the Amazon ES master nodes.
-B. Decrease the number of Amazon ES data nodes.
-C. Decrease the number of Amazon ES shards for the index.
-D. Increase the number of Amazon ES shards for the index.
-
-
-A manufacturing company has been collecting IoT sensor data from devices on its factory floor for a year and is storing the data in Amazon Redshift for daily analysis. A data analyst has determined that, at an expected ingestion rate of about 2 TB per day, the cluster will be undersized in less than 4 months. A long-term solution is needed. The data analyst has indicated that most queries only reference the most recent 13 months of data, yet there are also quarterly reports that need to query all the data generated from the past 7 years. The chief technology officer (CTO) is concerned about the costs, administrative effort, and performance of a long-term solution.
-Which solution should the data analyst use to meet these requirements?
-A. Create a daily job in AWS Glue to UNLOAD records older than 13 months to Amazon S3 and delete those records from Amazon Redshift. Create an external table in Amazon Redshift to point to the S3 location. Use Amazon Redshift Spectrum to join to data that is older than 13 months.
-B. Take a snapshot of the Amazon Redshift cluster. Restore the cluster to a new cluster using dense storage nodes with additional storage capacity.
-C. Execute a CREATE TABLE AS SELECT (CTAS) statement to move records that are older than 13 months to quarterly partitioned data in Amazon Redshift Spectrum backed by Amazon S3.
-D. Unload all the tables in Amazon Redshift to an Amazon S3 bucket using S3 Intelligent-Tiering. Use AWS Glue to crawl the S3 bucket location to create external tables in an AWS Glue Data Catalog. Create an Amazon EMR cluster using Auto Scaling for any daily analytics needs, and use Amazon Athena for the quarterly reports, with both using the same AWS Glue Data Catalog.
-
-https://aws.amazon.com/premiumsupport/knowledge-center/high-jvm-memory-pressure-elasticsearch/
- 
+Ans: c
