@@ -1,0 +1,25 @@
+ 1  yum update -y
+    2  yum install httpd php -y
+    3  systemctl start httpd
+    4  systemctl enable httpd
+    5  cd /var/www/html/
+    6  php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    7  php -r "if (hash_file('sha384', 'composer-setup.php') === '55ce33d7678c5a611085589f1f3ddf8b3c52d662cd01d4ba75c0ee0459970c2200a51f492d557530c71c15d8dba01eae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+    8  php composer-setup.php
+    9  php -r "unlink('composer-setup.php');"
+   10  ls -l
+   11  php composer.phar require aws/aws-sdk-php
+   12  ls -l
+   13  git clone https://github.com/devrajaem/dynamodb.git
+   14  yum install git
+   15  git clone https://github.com/devrajaem/dynamodb.git
+   16  ls -l
+   17  ls -l dynamodb/
+   18  cp dynamodb/createtables.php .
+   19  cp dynamodb/uploaddata.php .
+   20  cp dynamodb/uploaddata.php .
+   21  ls -l
+   22  rm -rf dynamodb/
+   23  ls -l
+   24  echo "Welcome To my DynamoDB app site" > index.html
+   25  ls -l
